@@ -24,26 +24,36 @@ ingredients_list = st.multiselect(
     max_selections = 5
 )
 
-if ingredients_list:
-    ingredients_string = ''
+response = requests.get(f'https://my.smoothiefroot.com/api/fruit/this_is_not_a_valid_fruit')
+st.write(response)
+st.write(response.to_json())
 
-    for fruit_chosen in ingredients_list:
-        ingredients_string += fruit_chosen + ' '
-        st.subheader(fruit_chosen + ' Nutrition Information')
-        smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/" + fruit_chosen)  
-        sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
 
-    # st.write(ingredients_string)
+# for fruit_name in my_dataframe.FRUIT_NAME.values():
+#   response = requests.get(f'https://my.smoothiefroot.com/api/fruit/{fruit_chosen}')
+  
+#   st.dataframe(
 
-    my_insert_stmt = """ insert into smoothies.public.orders(ingredients, name_on_order)
-                    values ('""" + ingredients_string + """', '""" + name_on_order + """')"""
+# if ingredients_list:
+#     ingredients_string = ''
 
-    # st.write(my_insert_stmt)
-    # st.stop()
+#     for fruit_chosen in ingredients_list:
+#         ingredients_string += fruit_chosen + ' '
+#         st.subheader(fruit_chosen + ' Nutrition Information')
+#         smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/" + fruit_chosen)  
+#         sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
 
-    time_to_insert = st.button('Submit Order')
+#     # st.write(ingredients_string)
 
-    if time_to_insert:
-        session.sql(my_insert_stmt).collect()
+#     my_insert_stmt = """ insert into smoothies.public.orders(ingredients, name_on_order)
+#                     values ('""" + ingredients_string + """', '""" + name_on_order + """')"""
 
-        st.success(f'Your Smoothie is ordered, {name_on_order}!', icon="✅")
+#     # st.write(my_insert_stmt)
+#     # st.stop()
+
+#     time_to_insert = st.button('Submit Order')
+
+#     if time_to_insert:
+#         session.sql(my_insert_stmt).collect()
+
+#         st.success(f'Your Smoothie is ordered, {name_on_order}!', icon="✅")
