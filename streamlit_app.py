@@ -31,7 +31,7 @@ ingredients_list = st.multiselect(
 
 st.write(my_dataframe)
 st.write(my_dataframe.columns)
-st.write(my_dataframe.FRUIT_NAME.values())
+st.write(my_dataframe.FRUIT_NAME.array())
 
 for i, v in my_dataframe.FRUIT_NAME.items():
   time.sleep(0.1)
