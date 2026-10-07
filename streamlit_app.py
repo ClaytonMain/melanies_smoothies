@@ -26,7 +26,7 @@ ingredients_list = st.multiselect(
 
 response = requests.get(f'https://my.smoothiefroot.com/api/fruit/this_is_not_a_valid_fruit')
 st.write(response)
-st.write(response.to_json())
+st.write(response.json())
 
 
 # for fruit_name in my_dataframe.FRUIT_NAME.values():
