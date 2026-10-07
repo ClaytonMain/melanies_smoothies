@@ -33,7 +33,7 @@ ingredients_list = st.multiselect(
 for i, v in my_dataframe.FRUIT_NAME.items():
   time.sleep(0.1)
   response = requests.get(f'https://my.smoothiefroot.com/api/fruit/{v}')
-  if !response.ok:
+  if not response.ok:
     st.write(f'"{v}" not found')
 
 # if ingredients_list:
