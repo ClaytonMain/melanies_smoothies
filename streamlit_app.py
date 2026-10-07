@@ -29,11 +29,11 @@ ingredients_list = st.multiselect(
 # st.write(response)
 # st.write(response.json())
 
-st.write(my_dataframe)
-st.write(my_dataframe.columns)
-st.write([x for x in my_dataframe.to_pandas().FRUIT_NAME])
+# st.write(my_dataframe)
+# st.write(my_dataframe.columns)
+# st.write([x for x in my_dataframe.to_pandas().FRUIT_NAME])
 
-for i, v in my_dataframe.FRUIT_NAME.items():
+for v in my_dataframe.to_pandas().FRUIT_NAME:
   time.sleep(0.1)
   response = requests.get(f'https://my.smoothiefroot.com/api/fruit/{v}')
   if not response.ok:
